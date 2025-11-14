@@ -1,61 +1,213 @@
-<html>
-
+<!-- Enhanced Birthday Website for Shethe -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Happy Birthday</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Shethe 🎉</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <style>
+    body{
+      background:#0a0f1c;
+      overflow-x:hidden;
+      color:#fff;
+      font-family:'Poppins',sans-serif;
+    }
+
+    /* Loader Button */
+    .loader{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+    #play{
+      padding:14px 35px;
+      font-size:22px;
+      border-radius:50px;
+      border:none;
+      background:#ff6bcb;
+      color:white;
+      font-weight:600;
+      box-shadow:0 0 20px #ff6bcc77;
+      cursor:pointer;
+      transition:.3s;
+    }
+    #play:hover{transform:scale(1.09)}
+
+    /* Confetti */
+    canvas#confetti{
+      position:fixed;
+      inset:0;
+      z-index:50;
+      pointer-events:none;
+    }
+
+    .main{
+      display:none;
+      animation:fadeIn 1.4s ease forwards;
+    }
+    @keyframes fadeIn{
+      from{opacity:0;transform:scale(1.05);} 
+      to{opacity:1;transform:scale(1);} 
+    }
+
+    #name{
+      font-size:45px;
+      font-weight:700;
+      color:#f7d774;
+      text-shadow:0 0 15px #000;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow{
+      from{text-shadow:0 0 10px #ff6bcb;} 
+      to{text-shadow:0 0 20px #ffe680;} 
+    }
+
+    .cake img{
+      filter:drop-shadow(0 0 12px #ff9adf);
+    }
+
+    /* 🎈 Balloon Animation (Updated as requested) */
+    .balloon-border{
+      position:absolute;
+      bottom:-300px; 
+      left:0;
+      width:100%;
+      opacity:.9;
+      animation:balloonUp 3.5s ease-out forwards;
+    }
+    @media (max-width: 576px){
+  .balloon-border{
+    bottom:20px !important;
+  }
+}
+    @keyframes balloonUp{
+      from{
+        transform:translateY(150px);
+        opacity:0;
+      }
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="loader">
-                <button id="play">Start</button>
-            </div>
-        </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="loader text-center">
+        <button id="play">Start Surprise 🎉</button>
+      </div>
     </div>
-    <audio class="song" controls loop>
-        <source src="music.mp3">
-        </source>
-        Your browser isn't invited for super fun audio time.
-    </audio>
-    <canvas id="confetti"></canvas>
-    <div class="main">
-        <div class="container pt-5">
-            <div class="row">
+  </div>
 
-                <div class="col-12 col-xl-6 mx-auto">
-                    <img src="img/banner.png" alt="">
-                </div>
+  <audio class="song" loop>
+    <source src="music.mp3" />
+  </audio>
 
-                <div class="col-12  text-center">
-                    <div id="name" class="area">Shethe</div>
-                </div>
+  <canvas id="confetti"></canvas>
 
-                <div class="col-12 text-center">
-                    <div class="type-wrap">
-                        <div id="typed-strings" class="typing">
-                            <h2>Happy Birthday <i id="nae">Shethe</i></h2>
-                            <h2>Have a wonderful day</h2>
-                            <h2>Filled with joy and happiness.</h2>
-                        </div>
-                        <span id="typed" style="white-space:pre;"></span>
-                    </div>
-                </div>
+  <div class="main">
+    <div class="container pt-5">
+      <div class="row justify-content-center text-center">
 
-                <div class="col-12 col-xl-3 cake">
-                    <img src="img/cake.gif" alt="">
-                </div>
-            </div>
+        <div class="col-12 col-xl-6 mx-auto mb-4">
+          <img src="img/banner.png" class="img-fluid" alt="Birthday Banner">
         </div>
-        <img src="img/Balloon-Border.png" width="100%" class="balloon-border">
+
+        <div class="col-12 mb-3">
+          <div id="name" class="area">Shethe</div>
+        </div>
+
+        <div class="col-12 mb-4">
+          <div class="type-wrap">
+            <div id="typed-strings" class="typing">
+              <h1>Happy Birthday <i id="nae">Shethe</i></h1>
+              <!-- <h2>Happy Birthday <i id="nae">Shethe</i></h2> -->
+              <h2>Have a Marvellous Birthday Apu🎀</h2>
+              <h2>To the Sweetest Sister in the World 🌸</h2>
+              <h2>May Allah Fill Your Life with Endless Happiness 🤍</h2>
+              <h2>You are One & Only Blessing in Our Family ✨</h2>
+              <h2>Always Stay Happy, Healthy & Smiling 🌙</h2>
+              <h2>May All Your Dreams Come True One Day 🎁</h2>
+              <h2>Keep Shining Like the Brightest Star ⭐</h2>
+              <h2>Lots of Love for You My Dear Sister 💗</h2>
+              <h2>Have a Wonderful & Magical Day 🎉</h2>              
+            </div>
+            <span id="typed" style="white-space:pre;"></span>
+          </div>
+        </div>
+
+        <div class="col-12 col-xl-3 cake mb-5">
+          <img src="img/cake.gif" class="img-fluid" alt="Cake">
+        </div>
+
+      </div>
     </div>
+
+    <!-- 🎈 Balloon with Animation -->
+    <img src="img/Balloon-Border.png" width="100%" class="balloon-border">
+
+  </div>
+
+  <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    // Confetti
+    const confetti = document.getElementById('confetti');
+    const ctx = confetti.getContext('2d');
+
+    confetti.width = window.innerWidth;
+    confetti.height = window.innerHeight;
+
+    const particles = [];
+    for(let i=0; i<180; i++){
+      particles.push({
+        x:Math.random()*confetti.width,
+        y:Math.random()*confetti.height,
+        s:Math.random()*5+2,
+        dx:(Math.random()-0.5)*2,
+        dy:Math.random()*2+1
+      });
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,confetti.width,confetti.height);
+      particles.forEach(p=>{
+        ctx.fillStyle = `hsl(${Math.random()*360},80%,60%)`;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+        ctx.fill();
+        p.x+=p.dx;
+        p.y+=p.dy;
+        if(p.y>confetti.height) p.y = -10;
+      });
+      requestAnimationFrame(draw);
+    }
+
+    // Start Button
+    document.getElementById('play').onclick = ()=>{
+      document.querySelector('.song').play();
+      document.querySelector('.loader').style.display='none';
+      document.querySelector('.main').style.display='block';
+      draw();
+
+      new Typed('#typed',{
+        stringsElement:'#typed-strings',
+        typeSpeed:40,
+        backSpeed:10,
+        loop:true
+      });
+    };
+  </script>
+
 </body>
-<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/typed.min.js"></script>
-<script src="js/script.js"></script>
-
 </html>
